@@ -11,7 +11,7 @@ spec:
   template:
     metadata:
       annotations:
-        configmap-hash: "bdff49ef"
+        configmap-hash: "9334887"
       labels:
         app: demo
     spec:
