@@ -10,6 +10,8 @@ spec:
       app: demo
   template:
     metadata:
+      annotations:
+        configmap-hash: "9334887"
       labels:
         app: demo
     spec:
