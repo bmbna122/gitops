@@ -1,0 +1,17 @@
+resources:
+  - ../../base
+
+configMapGenerator:
+  - name: demo-config
+    behavior: replace
+    envs:
+      - configmap.env
+
+patches:
+  - target:
+      kind: Deployment
+      name: demo-app
+    patch: |-
+      - op: replace
+        path: /spec/replicas
+        value: 1
