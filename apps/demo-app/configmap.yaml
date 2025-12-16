@@ -4,4 +4,4 @@ metadata:
   name: demo-config
   namespace: default
 data:
-  APP_MESSAGE: "Hello from Gitops v1"
+  APP_MESSAGE: "Hello from Gitops v2"
