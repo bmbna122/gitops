@@ -1,9 +1,8 @@
 resources:
   - deployment.yaml
   - service.yaml
+
 configMapGenerator:
   - name: demo-config
     envs:
-      - configmap.env
-generatorOptions:
-  disableNameSuffixHash: false
+      - config.env
