@@ -1,8 +1,6 @@
 resources:
   - ../../base
 
-namespace: prod
-
 configMapGenerator:
   - name: demo-config
     behavior: replace
