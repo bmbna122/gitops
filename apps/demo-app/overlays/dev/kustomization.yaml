@@ -6,8 +6,6 @@ namespace: dev
 resources:
   - ../../base
 
-namespace: dev
-
 configMapGenerator:
   - name: demo-config
     behavior: replace
