@@ -2,6 +2,8 @@ resources:
   - ../../base
   - missing-file.yaml
 
+namespace: prod
+
 configMapGenerator:
   - name: demo-config
     behavior: replace
