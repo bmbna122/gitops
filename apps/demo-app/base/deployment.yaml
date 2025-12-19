@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: nginx:does-not-exist
+        image: nginx:alpine
         envFrom:
         - configMapRef:
             name: demo-config
