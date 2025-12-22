@@ -1,0 +1,27 @@
+name: GitOps CI Checks
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Install kubectl
+        uses: azure/setup-kubectl@v4
+        with:
+          version: v1.29.0
+
+      - name: Validate DEV manifests
+        run: |
+          kubectl kustomize apps/demo-app/overlays/dev > /tmp/dev.yaml
+
+      - name: Validate PROD manifests
+        run: |
+          kubectl kustomize apps/demo-app/overlays/prod > /tmp/prod.yaml
