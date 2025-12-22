@@ -1,6 +1,5 @@
 resources:
   - ../../base
-  - missing-file.yaml
 
 namespace: prod
 
