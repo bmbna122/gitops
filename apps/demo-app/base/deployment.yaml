@@ -29,6 +29,7 @@ spec:
         envFrom:
         - configMapRef:
             name: demo-config
+            optional: false
         ports:
         - containerPort: 80
         resources:
