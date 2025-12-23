@@ -8,3 +8,6 @@ configMapGenerator:
   - name: demo-config
     envs:
       - configmap.env
+
+generatorOptions:
+  disableNameSuffixHash: true
