@@ -11,8 +11,7 @@ spec:
       - setWeight: 20
       - analysis:
           templates:
-          - templateName: cpu-check
-      - pause: {duration: 60s}
+          - templateName: smoke-test
       - setWeight: 50
       - pause: {duration: 120s}
       - setWeight: 100

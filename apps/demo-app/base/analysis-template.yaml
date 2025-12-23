@@ -1,19 +1,23 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AnalysisTemplate
 metadata:
-  name: cpu-check
+  name: smoke-test
 spec:
   metrics:
-  - name: high-cpu
-    interval: 30s
-    count: 2
-    successCondition: result < 80
-    failureCondition: result >= 80
+  - name: http-smoke-test
     provider:
-      kubernetes:
-        resource:
-          name: cpu
-          namespace: dev
-          labelSelector:
-            matchLabels:
-              app: demo
+      job:
+        spec:
+          backoffLimit: 0
+          template:
+            spec:
+              restartPolicy: Never
+              containers:
+              - name: curl
+                image: curlimages/curl:8.5.0
+                command:
+                - sh
+                - -c
+                - |
+                  echo "Running smoke test..."
+                  curl -sf http://demo-app.dev.svc.cluster.local || exit 1
