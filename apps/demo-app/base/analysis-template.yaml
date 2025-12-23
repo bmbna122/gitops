@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AnalysisTemplate
+metadata:
+  name: cpu-check
+spec:
+  metrics:
+  - name: high-cpu
+    interval: 30s
+    count: 2
+    successCondition: result < 80
+    failureCondition: result >= 80
+    provider:
+      kubernetes:
+        resource:
+          name: cpu
+          namespace: dev
+          labelSelector:
+            matchLabels:
+              app: demo
