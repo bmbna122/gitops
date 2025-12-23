@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - deployment.yaml
   - service.yaml
+  - analysis-template.yaml
 
 configMapGenerator:
   - name: demo-config

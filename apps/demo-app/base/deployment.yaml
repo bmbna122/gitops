@@ -9,7 +9,9 @@ spec:
     canary:
       steps:
       - setWeight: 20
-      - pause: {duration: 60s}
+      - analysis:
+          templates:
+          - templateName: smoke-test
       - setWeight: 50
       - pause: {duration: 120s}
       - setWeight: 100
@@ -25,7 +27,7 @@ spec:
     spec:
       containers:
       - name: app
-        image: nginx:1.25
+        image: nginx:1.26
         envFrom:
         - configMapRef:
             name: demo-config

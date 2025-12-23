@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AnalysisTemplate
+metadata:
+  name: smoke-test
+spec:
+  metrics:
+  - name: http-smoke-test
+    provider:
+      job:
+        spec:
+          backoffLimit: 0
+          template:
+            spec:
+              restartPolicy: Never
+              containers:
+              - name: curl
+                image: curlimages/curl:8.5.0
+                command:
+                - sh
+                - -c
+                - |
+                  echo "Running smoke test..."
+                  curl -sf http://demo-app.dev.svc.cluster.local || exit 1
