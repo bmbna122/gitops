@@ -27,7 +27,7 @@ spec:
     spec:
       containers:
       - name: app
-        image: nginx:1.26
+        image: nginx:does-not-exist
         envFrom:
         - configMapRef:
             name: demo-config
