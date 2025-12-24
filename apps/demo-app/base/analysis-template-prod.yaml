@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AnalysisTemplate
+metadata:
+  name: slo-prod
+spec:
+  metrics:
+  - name: http-latency
+    interval: 30s
+    count: 3
+    successCondition: result < 500
+    failureLimit: 1
+    provider:
+      job:
+        spec:
+          template:
+            spec:
+              restartPolicy: Never
+              containers:
+              - name: latency
+                image: curlimage/curl:8.5.0
+                command:
+                - sh
+                - -c
+                - |
+                  LAT=$(curl -o /dev/null -s -w '%{time_total}' http://demo-app.prod.svc.cluster.local)
+                  echo $LAT

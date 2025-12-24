@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: demo-app
+spec:
+  strategy:
+    canary:
+      steps:
+      - setWeight: 20
+      - analysis:
+          templates:
+          - templateName: slo-prod
+      - setWeight: 50
+      - pause: {duration: 120s}
+      - setWeight: 100
