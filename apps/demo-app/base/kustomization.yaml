@@ -4,6 +4,7 @@ resources:
   - deployment.yaml
   - service.yaml
   - analysis-template.yaml
+  - analysis-template-prod.yaml
 
 configMapGenerator:
   - name: demo-config
@@ -12,3 +13,6 @@ configMapGenerator:
 
 generatorOptions:
   disableNameSuffixHash: true
+
+patchesStrategicMerge:
+- rollout-analysis-prod.yaml
